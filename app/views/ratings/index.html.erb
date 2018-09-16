@@ -1,0 +1,16 @@
+<h2>List of ratings</h2>
+
+
+<table>
+
+  <tbody>
+    <% @ratings.each do |rating| %>
+      <tr>
+        <li> <%= rating %> <%= link_to 'delete', rating_path(rating.id), method: :delete, data: { confirm: 'Are you sure?' } %> </li>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Rating', new_rating_path %>
+
