@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h2><%= @user.username %></h2>
+
+<p>
+<% if @user.ratings.empty? %>
+      Haven't rated anything.
+    <% else %>
+      Has made <%= @user.ratings.count %> <%= "rating".pluralize(@user.ratings.count) %>, average rating <%= @user.average_rating%>
+    <% end %>
+</p>
+
+<h3><%= 'Ratings' %></h3>
+<table>
+<tbody>
+  <% @user.ratings.each do |rating| %>
+  <tr>
+      <td><%= rating %></td>
+      <td><%= link_to 'Delete', rating, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</tbody>
+</table>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
